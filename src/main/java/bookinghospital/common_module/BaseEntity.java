@@ -32,9 +32,9 @@ public class BaseEntity {
 	@LastModifiedBy
 	protected Long updatedBy;
 
-	protected boolean is_deleted;
+	protected boolean isDeleted;
 
 	public void delete(Long deletedBy) {
-		this.is_deleted = true;
+		this.isDeleted = true;
 	}
 }
