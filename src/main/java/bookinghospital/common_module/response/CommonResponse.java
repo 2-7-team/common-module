@@ -4,7 +4,6 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-// feignClient 응답용, 클라이언트 응답용
 public class CommonResponse<T> {
 	private String message;
 	private T data;
@@ -15,7 +14,7 @@ public class CommonResponse<T> {
 		this.data = data;
 	}
 
-	// 성공 응답 (메시지를 동적으로 설정)
+
 	public static <T> CommonResponse<T> success(T data, String message) {
 		return CommonResponse.<T>builder()
 			.message(message)
@@ -23,7 +22,6 @@ public class CommonResponse<T> {
 			.build();
 	}
 
-	// 실패 응답 (메시지를 동적으로 설정)
 	public static <T> CommonResponse<T> fail(String message) {
 		return CommonResponse.<T>builder()
 			.message(message)
