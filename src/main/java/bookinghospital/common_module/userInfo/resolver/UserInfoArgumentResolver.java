@@ -26,7 +26,17 @@ public class UserInfoArgumentResolver implements HandlerMethodArgumentResolver {
 		if (request != null) {
 			String userId = request.getHeader("X-User-Name");
 			String userRole = request.getHeader("X-User-Role");
-			return new UserDetails(userId, userRole);
+
+			log.info("X-USERNAME : " + userId);
+			log.info("X-USER-ROLE : " + userRole);
+
+			try{
+				Long userLongId = Long.parseLong(userId);
+				return new UserDetails(userLongId, userRole);
+			}catch (NumberFormatException e) {
+				throw new NumberFormatException("Invalid X-User-Name");
+			}
+
 		}
 		log.info("cannot find X-User-Name or X-User-Role");
 		return null;

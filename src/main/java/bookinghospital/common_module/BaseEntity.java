@@ -35,6 +35,8 @@ public class BaseEntity {
 	protected boolean isDeleted;
 
 	public void delete(Long deletedBy) {
+
 		this.isDeleted = true;
+		this.updatedBy = deletedBy;
 	}
 }
